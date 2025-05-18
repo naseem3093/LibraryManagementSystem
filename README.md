@@ -1,7 +1,7 @@
 # 📚 Library Management System — Microservices Edition
 
-![CI](https://img.shields.io/github/actions/workflow/status/your‑username/library‑management‑system/ci.yml?style=for-the-badge)
-![License](https://img.shields.io/github/license/your‑username/library‑management‑system?style=for-the-badge)
+![CI](https://img.shields.io/github/actions/workflow/status/naseem3093/LibraryManagementSystem/ci.yml?style=for-the-badge)
+![License](https://img.shields.io/github/license/naseem3093/LibraryManagementSystem?style=for-the-badge)
 ![Java](https://img.shields.io/badge/Java-17-blue?style=for-the-badge\&logo=java)
 ![Spring Boot](https://img.shields.io/badge/Spring Boot-3.x-6DB33F?style=for-the-badge\&logo=spring)
 ![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge\&logo=mysql)
@@ -57,8 +57,8 @@ flowchart LR
 
 ```bash
 # 1. Clone
-$ git clone https://github.com/your‑username/library‑management‑system.git
-$ cd library‑management‑system
+$ git clone https://github.com/naseem3093/LibraryManagementSystem.git
+$ cd LibraryManagementSystem
 
 # 2. Spin up infrastructure (Docker Compose)
 $ docker compose up -d mysql rabbitmq
