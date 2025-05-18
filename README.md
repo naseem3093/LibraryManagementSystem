@@ -1,151 +1,102 @@
 # 📚 Library Management System — Microservices Edition
 
-![CI](https://img.shields.io/github/actions/workflow/status/naseem3093/LibraryManagementSystem/ci.yml?style=for-the-badge)
-![License](https://img.shields.io/github/license/naseem3093/LibraryManagementSystem?style=for-the-badge)
-![Java](https://img.shields.io/badge/Java-17-blue?style=for-the-badge\&logo=java)
-![Spring Boot](https://img.shields.io/badge/Spring Boot-3.x-6DB33F?style=for-the-badge\&logo=spring)
-![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=for-the-badge\&logo=mysql)
+*Empowering Libraries, Streamlining Access to Knowledge*
 
-> **A production‑ready, modular Library Management System built with Spring Boot microservices and secured, scalable architecture.**
+![Last Commit](https://img.shields.io/github/last-commit/naseem3093/LibraryManagementSystem?style=flat-square) ![Java](https://img.shields.io/badge/java-100%25-blue?style=flat-square) ![Languages](https://img.shields.io/github/languages/count/naseem3093/LibraryManagementSystem?style=flat-square)
 
----
+*Built with the tools and technologies:*
 
-## ✨ Features at a Glance
-
-| Module                   | Key Capabilities                                             |
-| ------------------------ | ------------------------------------------------------------ |
-| **Book Service**         | CRUD books, search/filter, bulk import via CSV               |
-| **Member Service**       | Register members, profile management, role‑based auth        |
-| **Borrow Service**       | Issue/return books, transactional guarantees, inventory sync |
-| **Fine Service**         | Real‑time fine calculation, scheduled reminders              |
-| **Notification Service** | Email/SMS/WebPush via asynchronous event bus                 |
-
-*Fully stateless services* communicate over **REST** & **RabbitMQ** events, exposing **OpenAPI 3** specs for easy integration.
+![Spring](https://img.shields.io/badge/Spring-black?logo=spring\&style=flat-square) ![XML](https://img.shields.io/badge/XML-blue?style=flat-square)
 
 ---
 
-## 🏛️ Architecture
+## Table of Contents
 
-```mermaid
-flowchart LR
-    UI[React / Angular / Vue]
-    subgraph Backend
-        A[API Gateway]
-        B[Auth Service]
-        Book[Book Service]
-        Mem[Member Service]
-        Bor[Borrow Service]
-        Fine[Fine Service]
-        Notif[Notification Service]
-    end
-    DB[(MySQL | PostgreSQL)]
-    MQ[[RabbitMQ]]
+* [Overview](#overview)
+* [Getting Started](#getting-started)
 
-    UI --> A
-    A -->|JWT| B
-    A --> Book & Mem & Bor & Fine & Notif
-    Book & Mem & Bor & Fine & Notif --> DB
-    Book & Mem & Bor & Fine & Notif --> MQ
-    Notif -->|Events| MQ
-```
-
-*Generated diagrams are auto‑synced in CI/CD.*
+  * [Prerequisites](#prerequisites)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Testing](#testing)
+* [Return to Top](#librarymanagementsystem)
 
 ---
 
-## 🚀 Quick Start
+## Overview
+
+The **LibraryManagementSystem** is a powerful developer tool designed to streamline library operations through a robust microservices architecture, ensuring efficient management and secure access to resources.
+
+### Why LibraryManagementSystem?
+
+This project aims to simplify library management while enhancing scalability and security. The core features include:
+
+* 🚀 **Spring Boot Integration**: Simplifies the development of microservices with built‑in support for service discovery and configuration management.
+* 🔗 **Robust API Gateway**: Facilitates seamless communication between microservices, enhancing routing and load balancing.
+* 🔒 **Security Features**: Implements JWT for secure authentication and authorization, protecting sensitive data.
+* ⚙️ **Centralized Configuration Management**: Streamlines configuration updates across multiple services, improving maintainability.
+* ✅ **Comprehensive Testing**: Includes unit tests to ensure reliability and stability of the application.
+
+---
+
+## Getting Started
+
+### Prerequisites
+
+This project requires the following dependencies:
+
+* **Programming Language**: Java
+* **Package Manager**: Maven
+
+### Installation
+
+Build **LibraryManagementSystem** from the source and install dependencies:
+
+1. **Clone the repository:**
 
 ```bash
-# 1. Clone
-$ git clone https://github.com/naseem3093/LibraryManagementSystem.git
-$ cd LibraryManagementSystem
-
-# 2. Spin up infrastructure (Docker Compose)
-$ docker compose up -d mysql rabbitmq
-
-# 3. Build & run all services
-$ ./mvnw clean install -DskipTests
-$ docker compose up --build
-
-# 4. Explore APIs
-→ http://localhost:8080/swagger-ui.html
+git clone https://github.com/naseem3093/LibraryManagementSystem
 ```
 
-Need just one service?
+2. **Navigate to the project directory:**
 
 ```bash
-$ cd book-service && ./mvnw spring-boot:run
+cd LibraryManagementSystem
 ```
 
----
+3. **Install the dependencies:**
 
-## 🧰 Tech Stack
-
-* **Java 17**, **Spring Boot 3**, **Spring Cloud**
-* **MySQL 8** with **Flyway** migrations
-* **RabbitMQ** for event‑driven comms
-* **OpenAPI 3** docs with **SpringDoc**
-* **Docker / Docker Compose** for containerisation
-* **GitHub Actions** CI + **SonarCloud** quality gates
-
----
-
-## 🧪 Tests & Quality Gates
+Using **maven**:
 
 ```bash
-# Run unit + integration tests
-$ ./mvnw verify
+mvn install
 ```
 
-* 90%+ **line coverage** enforced
-* Mutation testing via **PIT**
-* Static analysis (**Checkstyle**, **SpotBugs**)
+### Usage
 
----
+Run the project with:
 
-## 🌐 Deployment
+Using **maven**:
 
-| Environment | Branch      | URL                                                            |
-| ----------- | ----------- | -------------------------------------------------------------- |
-| **Dev**     | `develop`   | [https://dev.library‑ms.io](https://dev.library‑ms.io)         |
-| **Staging** | `release/*` | [https://staging.library‑ms.io](https://staging.library‑ms.io) |
-| **Prod**    | `main`      | [https://library‑ms.io](https://library‑ms.io)                 |
+```bash
+mvn exec:java
+```
 
-Deploys are automated through **GitHub Actions → Docker Hub → Kubernetes (Helm)**.
+### Testing
 
----
+**LibraryManagementSystem** uses the `{test_framework}` test framework. Run the test suite with:
 
-## 📈 Roadmap
+Using **maven**:
 
-* [ ] GraphQL gateway
-* [ ] ElasticSearch full‑text search
-* [ ] Kafka migration for high‑throughput events
-* [ ] Server‑sent events (SSE) for live notifications
-
----
-
-## 🤝 Contributing
-
-1. Fork the repo & create your branch (`git checkout -b feat/amazing-feature`)
-2. Write tests and follow the **Conventional Commits** spec
-3. Submit a pull request 🚀
-
-See [`CONTRIBUTING.md`](CONTRIBUTING.md) for full guidelines.
-
----
-
-## 💬 Community & Support
-
-* **Discussions**: GitHub → *Questions & Ideas*
-* **Slack**: `#library-ms` on the Spring Community workspace
-* **Email**: [maintainer@example.com](mailto:maintainer@example.com)
-
----
-
-## 📝 License
-
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+```bash
+mvn test
+```
 
 ---
 
 > Built with ❤️  by **Naseem the Great** and contributors.")}
+
+[Return ↩](#librarymanagementsystem)
+
+
+
